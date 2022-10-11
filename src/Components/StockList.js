@@ -3,7 +3,7 @@ import FinnHub from "../api/FinnHub";
 import {AiFillCaretUp, AiFillCaretDown} from "react-icons/ai";
 
 const StockList = () =>{
-    const [stock, setStock] = useState();
+    const [stock, setStock] = useState([]);
     const [watchList, setWatchList] = useState(["AAPL", "MSFT", "TSLA"]);
 
     const changeColor = (change) =>{
@@ -43,7 +43,7 @@ const StockList = () =>{
                 console.log(err);
             }
         }
-        //fetchData();
+        fetchData();
         return () => (isMounted = false);
     }, [])
 
