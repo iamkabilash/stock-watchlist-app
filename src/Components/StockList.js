@@ -45,7 +45,7 @@ const StockList = () =>{
         }
         fetchData();
         return () => (isMounted = false);
-    }, [])
+    }, [watchList])
 
     return(
         <div className="flex flex-col justify-center mt-[100px]">
