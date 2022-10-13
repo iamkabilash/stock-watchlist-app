@@ -1,10 +1,26 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
-const WatchListContext = createContext();
+export const WatchListContext = createContext();
 
 export const WatchListContextProvider = (props) =>{
+
+    const [watchList, setWatchList] = useState(["AAPL", "MSFT", "TSLA"]);
+
+    const addStock = (stock) =>{
+        if(watchList.indexOf(stock) === -1) {
+            setWatchList([...watchList, stock]);
+        }
+    }
+
+    const deleteStock = (stock) =>{
+        setWatchList(watchList.filter((el) =>{
+            return el!== stock;
+        }))
+    }
+
     return (
-        <WatchListContext.Provider>
+        <WatchListContext.Provider value={{ watchList, addStock, deleteStock }}>
+            {props.children}
         </WatchListContext.Provider>
     );
 }

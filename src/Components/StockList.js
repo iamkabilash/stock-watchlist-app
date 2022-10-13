@@ -1,16 +1,23 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import FinnHub from "../api/FinnHub";
 import {AiFillCaretUp, AiFillCaretDown} from "react-icons/ai";
+import { WatchListContext } from "../Context/WatchListContext";
 
 const StockList = () =>{
     const [stock, setStock] = useState([]);
-    const [watchList, setWatchList] = useState(["AAPL", "MSFT", "TSLA"]);
+    const {watchList} = useContext(WatchListContext);
+    const navigate = useNavigate();
 
     const changeColor = (change) =>{
         return change>0 ? "text-green-800" : "text-red-800";
     }
     const renderIcon = (change) =>{
         return change>0 ? <AiFillCaretUp /> : <AiFillCaretDown />;
+    }
+
+    const handleStockSelect = (symbol) =>{
+        navigate(`detail/${symbol}`);
     }
     
     useEffect(() => {
@@ -66,7 +73,7 @@ const StockList = () =>{
                 <tbody>
                     {stock.map((stockData) => {
                         return(
-                            <tr key={stockData.symbol}>
+                            <tr onClick={() => handleStockSelect(stockData.symbol)} key={stockData.symbol} className="cursor-pointer" >
                                 <td className="border px-4 py-2 font-bold">{stockData.symbol}</td>
                                 <td className="border px-4 py-2">{stockData.data.c}</td>
                                 <td className={`border px-4 py-2 ${changeColor(stockData.data.d)}`}>{stockData.data.d}{renderIcon(stockData.data.d)}</td>
