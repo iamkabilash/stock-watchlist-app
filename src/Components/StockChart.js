@@ -4,7 +4,26 @@ import { useState } from "react";
 const StockChart = ({chartData, symbol}) =>{
     const [dateFormat, setDateFormat] = useState("24h");
     const {day, week, year} = chartData;
+
+    const timeFrame = () =>{
+        switch(dateFormat){
+            case "24h":
+                return day;
+            case "7d":
+                return week;
+            case "1y":
+                return year;
+            default:
+                return day;
+        }
+    }
+
+    //console.log(timeFrame());
+    const color = timeFrame()[timeFrame().length - 1].y - timeFrame()[0].y > 0 ? "#26C281" : "#ED3419";
+    //console.log(color);
+
     const options = {
+        colors: [color],
         title: {
             text: symbol,
             align: "center",
@@ -24,25 +43,14 @@ const StockChart = ({chartData, symbol}) =>{
             }
         }
     }
-    const timeFrame = () =>{
-        switch(dateFormat){
-            case "24h":
-                return day;
-            case "7d":
-                return week;
-            case "1y":
-                return year;
-            default:
-                return day;
-        }
-    }
+    
     const series = [{
         name: symbol,
         data: timeFrame()
     }];
     const buttonSelected = (button) =>{
         const classes = "px-2 mx-2 rounded ";
-        console.log(dateFormat);
+        //console.log(dateFormat);
         if(button === dateFormat){
             return classes + "bg-red-200"
         } else{
@@ -50,7 +58,7 @@ const StockChart = ({chartData, symbol}) =>{
         }
     }
     return (
-        <div className="w-[80vw] mx-auto mt-[40px]">
+        <div className="w-[60vw] mx-auto mt-[40px]">
             <Chart options={options} series={series} type="area" width="100%"  />
             <div>
                 <button onClick={() => setDateFormat("24h")} className={buttonSelected("24h")}>24h</button>

@@ -1,0 +1,6 @@
+.remove-stock{
+    display: none;
+}
+.stock-row:hover .remove-stock{
+    display: block;
+}

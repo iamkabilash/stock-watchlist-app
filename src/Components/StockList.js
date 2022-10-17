@@ -6,7 +6,7 @@ import { WatchListContext } from "../Context/WatchListContext";
 
 const StockList = () =>{
     const [stock, setStock] = useState([]);
-    const {watchList} = useContext(WatchListContext);
+    const {watchList, deleteStock} = useContext(WatchListContext);
     const navigate = useNavigate();
 
     const changeColor = (change) =>{
@@ -35,14 +35,14 @@ const StockList = () =>{
                     );
                 })
                 );
-                console.log(responses);
+                //console.log(responses);
                 const data = responses.map((response) => {
                     return {
                         data: response.data, 
                         symbol: response.config.params.symbol
                     }
                 });
-                console.log(data);
+                //console.log(data);
                 if(isMounted){
                     setStock(data);
                 }
@@ -55,8 +55,8 @@ const StockList = () =>{
     }, [watchList])
 
     return(
-        <div className="flex flex-col justify-center mt-[100px]">
-            <h1 className="text-center">Stock List</h1>
+        <div className="flex flex-col justify-center mt-[60px]">
+            <h1 className="text-center text-xl mb-[20px] font-bold">Stock List</h1>
             <table className="shadow-lg bg-white border-collapse mx-[10vw]">
                 <thead>
                     <tr>
@@ -73,7 +73,7 @@ const StockList = () =>{
                 <tbody>
                     {stock.map((stockData) => {
                         return(
-                            <tr onClick={() => handleStockSelect(stockData.symbol)} key={stockData.symbol} className="cursor-pointer" >
+                            <tr onClick={() => handleStockSelect(stockData.symbol)} key={stockData.symbol} className="cursor-pointer stock-row" >
                                 <td className="border px-4 py-2 font-bold">{stockData.symbol}</td>
                                 <td className="border px-4 py-2">{stockData.data.c}</td>
                                 <td className={`border px-4 py-2 ${changeColor(stockData.data.d)}`}>{stockData.data.d}{renderIcon(stockData.data.d)}</td>
@@ -81,7 +81,12 @@ const StockList = () =>{
                                 <td className="border px-4 py-2">{stockData.data.h}</td>
                                 <td className="border px-4 py-2">{stockData.data.l}</td>
                                 <td className="border px-4 py-2">{stockData.data.o}</td>
-                                <td className="border px-4 py-2">{stockData.data.pc}</td>
+                                <td className="border px-4 py-2">{stockData.data.pc} 
+                                <button className="px-[2px] py-[1px] bg-red-500 text-white rounded remove-stock" onClick={(e) =>{
+                                    e.stopPropagation();
+                                    deleteStock(stockData.symbol);
+                                }}>Remove</button>
+                                </td>
                             </tr>
                         );
                     })}
