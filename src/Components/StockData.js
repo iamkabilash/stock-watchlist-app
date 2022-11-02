@@ -29,18 +29,18 @@ const StockData = ({ symbol }) =>{
     
     return (
         <div className="w-screen flex flex-col items-center justify-center mt-[24px]">
-            <h2 className="text-2xl">Stock Data</h2>
+            <h2 className="text-2xl font-bold">Stock Data</h2>
             {stockData && (
                 <div className="flex flex-col gap-[6px] mt-[10px]">
                     <img src={stockData.logo} className="w-[50px]" alt="" />
-                    <h3>Name: {stockData.name}</h3>
-                    <h3>Country: {stockData.country}</h3>
-                    <h3>Currency: {stockData.currency}</h3>
-                    <h3>Exchange: {stockData.exchange}</h3>
-                    <h3>IPO date: {stockData.ipo}</h3>
-                    <h3>Phone: {stockData.phone}</h3>
-                    <h3>URL: {stockData.weburl}</h3>
-                    <h3>Outstanding shares: {stockData.shareOutstanding}</h3>
+                    <h3 className="font-semibold text-sky-800">Name: {stockData.name}</h3>
+                    <h3 className="font-semibold text-sky-800">Country: {stockData.country}</h3>
+                    <h3 className="font-semibold text-sky-800">Currency: {stockData.currency}</h3>
+                    <h3 className="font-semibold text-sky-800">Exchange: {stockData.exchange}</h3>
+                    <h3 className="font-semibold text-sky-800">IPO date: {stockData.ipo}</h3>
+                    <h3 className="font-semibold text-sky-800">Phone: {stockData.phone}</h3>
+                    <h3 className="font-semibold text-sky-800">URL: {stockData.weburl}</h3>
+                    <h3 className="font-semibold text-sky-800">Outstanding shares: {stockData.shareOutstanding}</h3>
                 </div>
             )}
         </div>
