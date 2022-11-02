@@ -1,4 +1,25 @@
-Preview project at: https://stock-watchlist-app.vercel.app/
+# TodoList App
+
+[![Last commit](https://img.shields.io/github/last-commit/iamkabilash/stock-watchlist-app?style=flat-square)](#)
+[![GitHub repo size](https://img.shields.io/github/repo-size/iamkabilash/stock-watchlist-app?style=flat-square)](#)
+[![Stars](https://img.shields.io/github/stars/iamkabilash/stock-watchlist-app?style=social)](#)
+
+# Running the Project
+[![Live link](https://img.shields.io/badge/Live%20link-Click%20here-blue?style=for-the-badge&logo=appveyor)](https://stock-watchlist-app.vercel.app/)
+
+# Tech used
+[![Project](https://img.shields.io/badge/HTML-red?style=for-the-badge&logo=appveyor)](#)
+[![Project](https://img.shields.io/badge/TailwindCSS-blue?style=for-the-badge&logo=appveyor)](#)
+[![Project](https://img.shields.io/badge/Javascript-yellow?style=for-the-badge&logo=appveyor)](#)
+[![Project](https://img.shields.io/badge/React-blue?style=for-the-badge&logo=appveyor)](#)
+
+# Screenshots
+![](./src/assets/thumbnail-1.png)
+
+![](./src/assets/thumbnail-2.png)
+
+![](./src/assets/thumbnail-3.png)
+<hr>
 
 # Getting Started with Create React App
 
