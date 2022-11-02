@@ -1,4 +1,4 @@
-# TodoList App
+# Stock Watchlist App
 
 [![Last commit](https://img.shields.io/github/last-commit/iamkabilash/stock-watchlist-app?style=flat-square)](#)
 [![GitHub repo size](https://img.shields.io/github/repo-size/iamkabilash/stock-watchlist-app?style=flat-square)](#)
